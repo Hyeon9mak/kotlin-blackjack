@@ -22,13 +22,9 @@ class Player(val playerName: PlayerName) {
 
     fun isRunning(): Boolean = !state.isFinished()
 
-    fun cards(): List<Card> {
-        return try {
-            this.state.cards()
-        } catch (_: UninitializedPropertyAccessException) {
-            throw IllegalStateException("아직 초기 카드를 받지 못했습니다.")
-        }
-    }
+    fun cards(): List<Card> =
+        if (this::state.isInitialized) this.state.cards()
+        else throw IllegalStateException("아직 초기 카드를 받지 못했습니다.")
 
     fun getPlayerNameValue(): String = playerName.value
 
