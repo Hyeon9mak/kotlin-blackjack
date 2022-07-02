@@ -2,15 +2,15 @@ package blackjack.domain.participant.state
 
 import blackjack.domain.deck.Card
 
-class Hit(hand: Hand) : Running(hand) {
+class Hit(cards: Cards) : Running(cards) {
     override fun receiveCard(card: Card): State {
-        this.hand.receiveCard(card = card)
+        this.cards.receiveCard(card = card)
 
-        return when (this.hand.isBust()) {
-            true -> Bust(this.hand)
-            false -> Hit(this.hand)
+        return when (this.cards.isBust()) {
+            true -> Bust(this.cards)
+            false -> Hit(this.cards)
         }
     }
 
-    override fun stay(): State = Stay(this.hand)
+    override fun stay(): State = Stay(this.cards)
 }

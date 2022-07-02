@@ -16,7 +16,7 @@ internal class StayTest : FreeSpec({
             Card(pattern = CardPattern.CLOVER, number = CardNumber.TEN)
         )
 
-        val stay = Stay(hand = Hand(cards = cards))
+        val stay = Stay(cards = Cards(values = cards))
 
         "카드 받기를 요청하면 예외가 발생한다." {
             shouldThrowExactly<IllegalStateException> { stay.receiveCard(card = Card(CardPattern.HEART, CardNumber.TWO)) }

@@ -20,35 +20,35 @@ internal class HitTest : FreeSpec({
     "힛에서" - {
         "카드 받기를 요청했을 때" - {
             "받은 카드의 합이 21을 넘으면 버스트가 된다." {
-                val hit = Hit(hand = Hand(cards = getHitScoreCards()))
+                val hit = Hit(cards = Cards(values = getHitScoreCards()))
                 val card = Card(pattern = CardPattern.SPADE, number = CardNumber.TEN)
                 hit.receiveCard(card = card).shouldBeInstanceOf<Bust>()
             }
 
             "받은 카드의 합이 21 이하일 경우 힛을 유지한다." {
-                val hit = Hit(hand = Hand(cards = getHitScoreCards()))
+                val hit = Hit(cards = Cards(values = getHitScoreCards()))
                 val card = Card(pattern = CardPattern.SPADE, number = CardNumber.TWO)
                 hit.receiveCard(card = card).shouldBeInstanceOf<Hit>()
             }
         }
 
         "스테이로 상태변화를 요청하면 스테이로 변경된다." {
-            val hit = Hit(hand = Hand(cards = getHitScoreCards()))
+            val hit = Hit(cards = Cards(values = getHitScoreCards()))
             hit.stay().shouldBeInstanceOf<Stay>()
         }
 
         "종료되었는지 물으면 False를 반환한다." {
-            val hit = Hit(hand = Hand(cards = getHitScoreCards()))
+            val hit = Hit(cards = Cards(values = getHitScoreCards()))
             hit.isFinished() shouldBe false
         }
 
         "카드 목록을 반환할 수 있다." {
-            val hit = Hit(hand = Hand(cards = getHitScoreCards()))
+            val hit = Hit(cards = Cards(values = getHitScoreCards()))
             hit.cards().shouldContainExactly(getHitScoreCards())
         }
 
         "점수를 반환할 수 있다." {
-            val hit = Hit(hand = Hand(cards = getHitScoreCards()))
+            val hit = Hit(cards = Cards(values = getHitScoreCards()))
             hit.score() shouldBe 19
         }
     }
