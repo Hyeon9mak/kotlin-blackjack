@@ -30,6 +30,8 @@ data class Score(
         return Score(value = increaseValue)
     }
 
+    operator fun compareTo(score: Score): Int = this.value.compareTo(score.value)
+
     companion object {
         private const val BLACKJACK = 21
         private const val INCREASE_ACE_SCORE = 10

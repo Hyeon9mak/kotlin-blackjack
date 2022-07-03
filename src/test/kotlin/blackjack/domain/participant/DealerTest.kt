@@ -3,7 +3,6 @@ package blackjack.domain.participant
 import blackjack.domain.deck.Card
 import blackjack.domain.deck.CardNumber
 import blackjack.domain.deck.CardPattern
-import io.kotest.assertions.throwables.shouldThrowExactly
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
 
@@ -32,11 +31,6 @@ internal class DealerTest : FreeSpec({
             )
 
             dealer.isOverThenLimitScore() shouldBe true
-        }
-
-        "상태값이 초기화 되지 않았다면 예외가 발생한다." {
-            val dealer = Dealer()
-            shouldThrowExactly<IllegalStateException> { dealer.isOverThenLimitScore() }
         }
     }
 })
