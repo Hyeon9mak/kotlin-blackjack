@@ -3,6 +3,7 @@ package blackjack.domain.participant.state
 import blackjack.domain.deck.Card
 import blackjack.domain.deck.CardNumber
 import blackjack.domain.deck.CardPattern
+import io.kotest.assertions.throwables.shouldThrowExactly
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.shouldBe
@@ -50,7 +51,12 @@ internal class HitTest : FreeSpec({
 
         "점수를 반환할 수 있다." {
             val hit = Hit(cards = Cards(values = getHitScoreCards()))
-            hit.score() shouldBe 19
+            hit.score().value shouldBe 19
+        }
+
+        "다른 점수와 승패를 비교하려하면 예외가 발생한다." {
+            val hit = Hit(cards = Cards(values = getHitScoreCards()))
+            shouldThrowExactly<IllegalStateException> { hit.judgementPlayerResult(otherScore = Score(10)) }
         }
     }
 })
