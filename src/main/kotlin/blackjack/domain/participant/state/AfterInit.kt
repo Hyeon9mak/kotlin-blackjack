@@ -6,5 +6,5 @@ sealed class AfterInit(val cards: Cards) : State {
 
     override fun cards(): List<Card> = cards.values.toList()
 
-    override fun score(): Int = cards.getScoreValue
+    override fun score(): Score = cards.score()
 }

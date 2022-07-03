@@ -21,6 +21,6 @@ class Dealer(
     }
 
     fun isOverThenLimitScore(): Boolean =
-        if (this::state.isInitialized) state.score() >= 17
+        if (this::state.isInitialized) state.score().value >= 17
         else throw IllegalStateException("아직 초기 카드를 받지 못했습니다.")
 }
