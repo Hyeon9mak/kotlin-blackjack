@@ -22,6 +22,7 @@ internal class HitTest : FreeSpec({
             "받은 카드의 합이 21을 넘으면 버스트가 된다." {
                 val hit = Hit(cards = Cards(values = getHitScoreCards()))
                 val card = Card(pattern = CardPattern.SPADE, number = CardNumber.TEN)
+                println(hit.cards().map { it.number.score })
                 hit.receiveCard(card = card).shouldBeInstanceOf<Bust>()
             }
 

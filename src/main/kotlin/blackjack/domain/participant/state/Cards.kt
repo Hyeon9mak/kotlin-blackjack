@@ -4,19 +4,19 @@ import blackjack.domain.deck.Card
 import blackjack.domain.deck.CardNumber
 
 class Cards(
-    val values: MutableList<Card> = mutableListOf(),
+    val values: List<Card> = listOf(),
 ) {
 
-    fun receiveCard(card: Card) {
-        values.add(card)
-    }
+    val isBustScore: Boolean = score().isBust
 
-    fun isBust(): Boolean = score().isBust()
+    val isBlackjackScore: Boolean = score().isBlackjack
 
-    fun getScoreValue(): Int = score().value
+    val getScoreValue: Int = score().value
+
+    fun receiveCard(card: Card): Cards = Cards(values = values + card)
 
     private fun score(): Score {
-        var score = Score(this.values.sumOf { it.number.score })
+        val score = Score(this.values.sumOf { it.number.score })
         val countOfAce = this.values.count { it.number == CardNumber.ACE }
         return score.increaseAceScoreBeforeBust(countOfAce = countOfAce)
     }
