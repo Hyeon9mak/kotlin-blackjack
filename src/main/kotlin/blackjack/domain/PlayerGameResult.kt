@@ -10,5 +10,5 @@ data class PlayerGameResult(
     val betAmount: BetAmount,
     val gameResult: GameResult,
 ) {
-    val yield: Int = (betAmount.value * gameResult.magnification).roundToInt()
+    val playerYield: Int = (betAmount.value * gameResult.magnification).roundToInt()
 }

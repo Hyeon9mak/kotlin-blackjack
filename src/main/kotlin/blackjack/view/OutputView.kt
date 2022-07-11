@@ -58,10 +58,10 @@ class OutputView {
     fun printGameResult(gameResults: List<PlayerGameResult>) {
         println()
         println("## 최종 수익")
-        val dealerYield = -(gameResults.sumOf { it.yield })
+        val dealerYield = -(gameResults.sumOf { it.playerYield })
         println("딜러: $dealerYield")
         gameResults.forEach {
-            println("${it.playerName.value}: ${it.yield}")
+            println("${it.playerName.value}: ${it.playerYield}")
         }
     }
 }

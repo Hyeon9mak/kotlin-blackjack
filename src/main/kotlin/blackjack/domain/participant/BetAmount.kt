@@ -1,6 +1,7 @@
 package blackjack.domain.participant
 
-data class BetAmount(
+@JvmInline
+value class BetAmount(
     val value: Double
 ) {
     init {

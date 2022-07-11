@@ -19,7 +19,7 @@ internal class PlayerGameResultTest : FreeSpec({
                 gameResult = GameResult.BLACKJACK_WIN
             )
 
-            gameResult.yield shouldBe 1_500
+            gameResult.playerYield shouldBe 1_500
         }
 
         "블랙잭으로 승리한 경우 1배 수익률이 발생한다." {
@@ -29,7 +29,7 @@ internal class PlayerGameResultTest : FreeSpec({
                 gameResult = GameResult.BLACKJACK_WIN
             )
 
-            gameResult.yield shouldBe 1_500
+            gameResult.playerYield shouldBe 1_500
         }
 
         "승리한 경우 1배 수익률이 발생한다." {
@@ -39,7 +39,7 @@ internal class PlayerGameResultTest : FreeSpec({
                 gameResult = GameResult.WIN
             )
 
-            gameResult.yield shouldBe 1_000
+            gameResult.playerYield shouldBe 1_000
         }
 
         "비긴 경우 1배 수익률이 발생한다." {
@@ -49,7 +49,7 @@ internal class PlayerGameResultTest : FreeSpec({
                 gameResult = GameResult.DRAW
             )
 
-            gameResult.yield shouldBe 1_000
+            gameResult.playerYield shouldBe 1_000
         }
 
         "패배한 경우 -1배 수익률이 발생한다." {
@@ -59,7 +59,7 @@ internal class PlayerGameResultTest : FreeSpec({
                 gameResult = GameResult.LOSE
             )
 
-            gameResult.yield shouldBe -1_000
+            gameResult.playerYield shouldBe -1_000
         }
     }
 })
